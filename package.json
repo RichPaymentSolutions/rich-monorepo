@@ -1,0 +1,39 @@
+{
+  "name": "@rich/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+    "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "@rich/monorepo",
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "clean": "turbo run clean --parallel",
+    "dev": "turbo run dev --parallel --no-cache",
+    "lint": "turbo run lint",
+    "prepare": "is-ci || husky install",
+    "purge": "turbo run clean && rimraf ./**/node_modules node_modules",
+    "rebuild": "rimraf ./node_modules/.cache/turbo && npm run build",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "release": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.2",
+    "@changesets/cli": "^2.20.0",
+    "eslint-config-custom": "*",
+    "is-ci": "^3.0.1",
+    "husky": "latest",
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.17"
+}
