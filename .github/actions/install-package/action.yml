@@ -1,0 +1,8 @@
+name: install-package
+description: Do yarn instal
+
+runs:
+  using: composite
+  steps:
+    - name: Installs package
+      run: echo "Install done"

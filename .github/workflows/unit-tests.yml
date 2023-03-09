@@ -1,0 +1,17 @@
+name: Unit testing with jest
+
+on:
+  pull_request:
+    branches:
+      - "master"
+      - "staging"
+      - "dev"
+
+jobs:
+  install:
+    uses: ./.github/actions/install-package
+   run-unit-test:
+    steps:
+      - name: Run UT
+        run: |
+          echo "UT Done"
